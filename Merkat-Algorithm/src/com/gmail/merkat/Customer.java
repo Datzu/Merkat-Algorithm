@@ -30,7 +30,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", cart=" + cart + "]";
+		return "\n\t\tCustomer [id=" + id + ", cart=" + cart + "]";
 	}
 
 	

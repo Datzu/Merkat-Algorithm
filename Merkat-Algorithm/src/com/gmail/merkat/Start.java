@@ -5,7 +5,12 @@ public class Start {
 
 	public static void main(String[] args) {
 		lidl = new Merkat();
-		lidl.start();	
+		lidl.start();
+		System.out.println(lidl.toString());
+	}
+	
+	public Merkat getMerkat() {
+		return lidl;
 	}
 
 }
