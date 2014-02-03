@@ -5,11 +5,17 @@ public class Customer {
 	private Car cart;
 
 	public Customer() {
+		
 	}
 	
 	public Customer(int id, Car cart) {
 		this.id = id;
-		this.cart = cart;
+		if (cart != null) {
+			this.cart = cart;
+		} else {
+			this.cart = new Car();
+		}
+		
 	}
 
 	public int getId() {

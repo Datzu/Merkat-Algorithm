@@ -7,6 +7,7 @@ public class Merkat {
 
 	private List<SellStation> sellStationList;
 	private List<Employee> employeeList;
+	private int awaitingCustomers = 0;
 
 	public Merkat() {
 		sellStationList = new ArrayList<SellStation>();
@@ -25,6 +26,8 @@ public class Merkat {
 		for (int i = 0; i < Utils.nEmployees; i++) {
 			employeeList.add(new Employee(i));
 		}
+		GenerateCustomer genCus = new GenerateCustomer();
+		genCus.start();
 	}
 
 	public List<SellStation> getSellStationList() {
@@ -41,6 +44,14 @@ public class Merkat {
 
 	public void setEmployeeList(List<Employee> employeeList) {
 		this.employeeList = employeeList;
+	}
+	
+	public int getAwaitingCustomers() {
+		return awaitingCustomers;
+	}
+
+	public void setAwaitingCustomers(int awaitingCustomers) {
+		this.awaitingCustomers = awaitingCustomers;
 	}
 
 	@Override

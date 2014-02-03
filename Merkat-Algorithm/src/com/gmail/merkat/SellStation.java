@@ -2,7 +2,7 @@ package com.gmail.merkat;
 
 import java.util.Queue;
 
-public class SellStation extends Thread{
+public class SellStation {
 	
 	private String stationName;
 	private Queue<Customer> customers;
@@ -19,11 +19,6 @@ public class SellStation extends Thread{
 		this.customers = customers;
 		this.actualEmployee = actualEmployee;
 		this.asignedEmployee = true;
-	}
-
-	@Override
-	public void run() {
-		super.run();
 	}
 	
 	public String getStationName() {

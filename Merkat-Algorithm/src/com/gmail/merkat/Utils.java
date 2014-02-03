@@ -17,5 +17,5 @@ public class Utils {
 	public static final int maxTimeScan = 1000; // temps maxim que tarda el caixer a pasar el producte a la cinta
 	
 	public static final int minimeGenCustomers = 0; // temps minim per generar clients
-	public static final int maxTimeGenCustomers = 1000; // temps maxim per generar clients
+	public static final int maxTimeGenCustomers = 5000; // temps maxim per generar clients
 }
