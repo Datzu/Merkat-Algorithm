@@ -11,9 +11,13 @@ public class Start {
 		lidl = new Merkat();
 		lidl.start();
 		
+		GenerateCustomer genCus = new GenerateCustomer();
+		genCus.start();
+		
 		do {
 			try {
-				System.out.println(lidl.toString());
+				//System.out.println(lidl.toString());
+				System.out.println(lidl.getAwaitingCustomers());
 				Thread.sleep(8000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();

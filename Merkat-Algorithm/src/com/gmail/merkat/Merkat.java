@@ -26,8 +26,6 @@ public class Merkat {
 		for (int i = 0; i < Utils.nEmployees; i++) {
 			employeeList.add(new Employee(i));
 		}
-		GenerateCustomer genCus = new GenerateCustomer();
-		genCus.start();
 	}
 
 	public List<SellStation> getSellStationList() {

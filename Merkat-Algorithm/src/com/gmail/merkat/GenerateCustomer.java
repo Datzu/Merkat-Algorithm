@@ -9,7 +9,7 @@ public class GenerateCustomer extends Thread {
 		super.run();
 		do {
 			try {
-				int n = new Random().nextInt(Utils.maxNCustomers) / 20;
+				int n = new Random().nextInt(Utils.maxGenCustomers);
 				if (n + Start.lidl.getAwaitingCustomers() < Utils.maxNCustomers) {
 					Start.lidl.setAwaitingCustomers(Start.lidl
 							.getAwaitingCustomers() + n);
@@ -17,7 +17,7 @@ public class GenerateCustomer extends Thread {
 				} else {
 					System.out.println("Canno't create new customers.\n");
 				}
-				Thread.sleep(Utils.maxTimeGenCustomers);
+				Thread.sleep(new Random().nextInt(Utils.maxTimeGenCustomers-Utils.minimeGenCustomers)+Utils.minimeGenCustomers);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -12,10 +12,11 @@ public class Utils {
 	
 	public static final int maxNQueueCustomers = 5; // tamany màxim de cua de clients per caixa
 	public static final int maxNCustomers = 300; // tamany màxim de clients al merkat
+	public static final int maxGenCustomers = 10;
 	
 	public static final int minTimeScan = 10; // temps minim que tarda el caixer a pasar el producte a la cinta
 	public static final int maxTimeScan = 1000; // temps maxim que tarda el caixer a pasar el producte a la cinta
 	
-	public static final int minimeGenCustomers = 0; // temps minim per generar clients
-	public static final int maxTimeGenCustomers = 5000; // temps maxim per generar clients
+	public static final int minimeGenCustomers = 500; // temps minim per generar clients
+	public static final int maxTimeGenCustomers = 10000; // temps maxim per generar clients
 }
