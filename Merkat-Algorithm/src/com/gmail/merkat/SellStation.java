@@ -21,6 +21,14 @@ public class SellStation {
 		this.asignedEmployee = true;
 	}
 	
+	public void addCustomer(Customer c) {
+		customers.add(c);
+	}
+	
+	public void removeCustomer() {
+		customers.remove();
+	}
+	
 	public String getStationName() {
 		return stationName;
 	}
@@ -49,6 +57,14 @@ public class SellStation {
 	public void setActualEmployee(Employee actualEmployee) {
 		this.actualEmployee = actualEmployee;
 		this.asignedEmployee = true;
+	}
+
+	public boolean isAsignedEmployee() {
+		return asignedEmployee;
+	}
+
+	public void setAsignedEmployee(boolean asignedEmployee) {
+		this.asignedEmployee = asignedEmployee;
 	}
 
 	@Override

@@ -13,9 +13,7 @@ public class GenerateCustomer extends Thread {
 				if (n + Start.lidl.getAwaitingCustomers() < Utils.maxNCustomers) {
 					Start.lidl.setAwaitingCustomers(Start.lidl
 							.getAwaitingCustomers() + n);
-					System.out.println("Creating: " + n + " new customers.\n");
-				} else {
-					System.out.println("Canno't create new customers.\n");
+//					System.out.println("Creating: " + n + " new customers.\n");
 				}
 				Thread.sleep(new Random().nextInt(Utils.maxTimeGenCustomers-Utils.minimeGenCustomers)+Utils.minimeGenCustomers);
 			} catch (InterruptedException e) {

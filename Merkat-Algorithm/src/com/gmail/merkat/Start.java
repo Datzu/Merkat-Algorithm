@@ -1,6 +1,5 @@
 package com.gmail.merkat;
 
-import java.util.Random;
 
 public class Start {
 	
@@ -16,8 +15,10 @@ public class Start {
 		
 		do {
 			try {
-				//System.out.println(lidl.toString());
-				System.out.println(lidl.getAwaitingCustomers());
+				System.out.println(lidl.toString());
+				do {
+					
+				} while (lidl.getAwaitingCustomers() > 0);
 				Thread.sleep(8000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -28,6 +29,16 @@ public class Start {
 
 	public Merkat getMerkat() {
 		return lidl;
+	}
+	
+	public class asignCustomers extends Thread {
+		
+		@Override
+		public void run() {
+			super.run();
+			lidl.assignCustomer();
+		}
+		
 	}
 
 }

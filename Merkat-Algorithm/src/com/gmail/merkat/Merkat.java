@@ -2,12 +2,15 @@ package com.gmail.merkat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public class Merkat {
 
 	private List<SellStation> sellStationList;
 	private List<Employee> employeeList;
+	private Queue<Employee> employeeQueue;
 	private int awaitingCustomers = 0;
+	private int actualCustomerInQueue = 0;
 
 	public Merkat() {
 		sellStationList = new ArrayList<SellStation>();
@@ -25,6 +28,22 @@ public class Merkat {
 		}
 		for (int i = 0; i < Utils.nEmployees; i++) {
 			employeeList.add(new Employee(i));
+		}
+	}
+	
+	public void assignCustomer()  {
+		for (int i = awaitingCustomers; i > actualCustomerInQueue; i--) {
+			for (SellStation s : sellStationList) {
+				while (s.getCustomers().size() < 6) {
+					if (!s.isAsignedEmployee()) {
+						Employee tmpEmployee = employeeQueue.remove();
+						employeeQueue.add(tmpEmployee);
+						System.out.println("The selected employee is: " + tmpEmployee.toString());
+						s.setActualEmployee(tmpEmployee);
+					}
+					s.addCustomer(new Customer(i));
+				}
+			}
 		}
 	}
 

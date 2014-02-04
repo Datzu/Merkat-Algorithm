@@ -1,5 +1,6 @@
 package com.gmail.merkat;
 
+
 public class Customer {
 	private int id;
 	private Car cart;
@@ -7,15 +8,15 @@ public class Customer {
 	public Customer() {
 		
 	}
-	
+
+	public Customer(int id) {
+		this.id = id;
+		this.cart = new Car();
+	}
+
 	public Customer(int id, Car cart) {
 		this.id = id;
-		if (cart != null) {
-			this.cart = cart;
-		} else {
-			this.cart = new Car();
-		}
-		
+		this.cart = cart;
 	}
 
 	public int getId() {
@@ -39,5 +40,4 @@ public class Customer {
 		return "\n\t\tCustomer [id=" + id + ", cart=" + cart + "]";
 	}
 
-	
 }
