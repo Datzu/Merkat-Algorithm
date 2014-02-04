@@ -1,20 +1,23 @@
 package com.gmail.merkat;
 
+import java.util.Random;
 import java.util.Stack;
 
 public class Car {
 	private Stack<Integer> products;
 
 	public Car() {
+		this.products = new Stack<Integer>();
 		fillCar();
 	}
 
 	public Car(Stack<Integer> products) {
 		this.products = products;
 	}
-	
+
 	public void fillCar() {
-		for (int i = 0; i < Utils.maxNProducts; i++) {
+		int prova = new Random().nextInt(Utils.maxNProducts);
+		for (int i = 0; i < prova; i++) {
 			products.add(i);
 		}
 	}
@@ -29,7 +32,7 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Car [products=" + products + "]";
+		return "\n\t\t\tCar [products=" + products + "]";
 	}
-	
+
 }

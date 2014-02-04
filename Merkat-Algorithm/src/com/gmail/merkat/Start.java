@@ -1,44 +1,51 @@
 package com.gmail.merkat;
 
-
 public class Start {
-	
 	public static Merkat lidl;
 
 	public static void main(String[] args) {
-		
+
 		lidl = new Merkat();
 		lidl.start();
 		
 		GenerateCustomer genCus = new GenerateCustomer();
 		genCus.start();
-		
-		do {
-			try {
-				System.out.println(lidl.toString());
-				do {
-					
-				} while (lidl.getAwaitingCustomers() > 0);
-				Thread.sleep(8000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		} while (true);
-
+		ShowLidl t = new ShowLidl();
+		t.start();
+		startRun();
 	}
 
 	public Merkat getMerkat() {
 		return lidl;
 	}
-	
-	public class asignCustomers extends Thread {
-		
+
+	public synchronized static void startRun() {
+		do{
+			if (lidl.canAssign()) { 
+				lidl.assignCustomer();
+				lidl.updateTotalCustomer();
+			}
+		}while(true);
+
+	}
+
+	public static class ShowLidl extends Thread {
+		public void ShowLidl() {
+
+		}
+
 		@Override
 		public void run() {
 			super.run();
-			lidl.assignCustomer();
+			try {
+				do {
+					System.out.println(lidl.toString());
+					Thread.sleep(500);
+				} while (true);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		}
-		
 	}
 
 }

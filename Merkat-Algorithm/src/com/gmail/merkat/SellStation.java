@@ -1,9 +1,10 @@
 package com.gmail.merkat;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class SellStation {
-	
+
 	private String stationName;
 	private Queue<Customer> customers;
 	private Employee actualEmployee;
@@ -12,27 +13,31 @@ public class SellStation {
 	public SellStation(String s) {
 		this.stationName = s;
 		this.asignedEmployee = false;
+		this.customers = new LinkedList<Customer>();
+
 	}
 
-	public SellStation(String s, Queue<Customer> customers, Employee actualEmployee) {
+	public SellStation(String s, Queue<Customer> customers,
+			Employee actualEmployee) {
 		this.stationName = s;
 		this.customers = customers;
 		this.actualEmployee = actualEmployee;
-		this.asignedEmployee = true;
+		this.asignedEmployee = false;
+		this.customers = new LinkedList<Customer>();
 	}
-	
+
 	public void addCustomer(Customer c) {
 		customers.add(c);
 	}
-	
+
 	public void removeCustomer() {
 		customers.remove();
 	}
-	
+
 	public String getStationName() {
 		return stationName;
 	}
-	
+
 	public void setStationName(String name) {
 		this.stationName = name;
 	}
@@ -48,7 +53,7 @@ public class SellStation {
 	public Employee getActualEmployee() {
 		return actualEmployee;
 	}
-	
+
 	public void unasignEmployee() {
 		this.actualEmployee = null;
 		this.asignedEmployee = false;
@@ -70,19 +75,22 @@ public class SellStation {
 	@Override
 	public String toString() {
 		String s = "";
-		s += ("- " + this.stationName + "\n");
+		s += ("\n - " + this.stationName + "\n");
 		if (asignedEmployee) {
 			s += ("\tActual employee: " + actualEmployee.toString());
 		} else {
 			s += ("\tNo employee asigned.");
 		}
-		s += "\n";
-		if (customers != null) {
-			s += customers.toString();
+		if (customers.size() == 0) {
+			s += ("\n\tNo customers in queue.");
 		} else {
-			s += ("\tNo customers in queue.");
+			s += customers.toString();
+			for (int i = 0; i < customers.size(); i++) {
+				s += (s + " , " + customers.element());
+			}
+
 		}
-		
+
 		return s;
 	}
 

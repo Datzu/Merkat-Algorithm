@@ -1,12 +1,11 @@
 package com.gmail.merkat;
 
-
 public class Customer {
 	private int id;
 	private Car cart;
 
 	public Customer() {
-		
+
 	}
 
 	public Customer(int id) {
@@ -37,7 +36,9 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "\n\t\tCustomer [id=" + id + ", cart=" + cart + "]";
+		String s = "";
+		s += ("\n\tCustomer " + cart.toString());
+		return s;
 	}
 
 }
