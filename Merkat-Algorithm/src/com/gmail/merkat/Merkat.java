@@ -11,7 +11,7 @@ public class Merkat {
 	private List<Employee> employeeList;
 	private Queue<Employee> employeeQueue;
 	private int totalCustomers = Utils.maxNCustomers;
-	
+
 	public Queue<Customer> customerQueue;
 
 	public Merkat() {
@@ -58,11 +58,11 @@ public class Merkat {
 			}
 		}
 	}
-	
+
 	public int getCustomersInQueue() {
 		return this.customerQueue.size();
 	}
-	
+
 	public int getTotalCustomers() {
 		return this.totalCustomers;
 	}

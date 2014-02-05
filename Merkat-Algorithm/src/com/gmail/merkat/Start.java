@@ -9,17 +9,17 @@ public class Start {
 
 		GenerateCustomer genCus = new GenerateCustomer();
 		genCus.start();
-		
+
 		ShowLidl showLidl = new ShowLidl();
 		showLidl.start();
-		
+
 		while (lidl.getTotalCustomers() > 0) {
 			showLidl.run();
 			while (lidl.getCustomersInQueue() > 0) {
 				lidl.assignCustomer();
 			}
 		}
-		
+
 	}
 
 	public static class ShowLidl extends Thread {

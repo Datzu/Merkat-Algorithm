@@ -12,18 +12,18 @@ public class GenerateCustomer extends Thread {
 				System.out.println("Creating: " + n + " new customers.\n");
 				if (n + Start.lidl.customerQueue.size() < Utils.maxNCustomers) {
 					for (int i = 0; i < n; i++) {
-						Start.lidl.customerQueue.add(new Customer(new Random().nextInt()));
+						Start.lidl.customerQueue.add(new Customer(new Random()
+								.nextInt()));
 					}
 				}
 				Thread.sleep(new Random().nextInt(Utils.maxTimeGenCustomers
 						- Utils.minimeGenCustomers)
 						+ Utils.minimeGenCustomers);
-			
+
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		} while (true);
-
 	}
 
 }

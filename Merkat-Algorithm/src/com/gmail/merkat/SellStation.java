@@ -30,33 +30,8 @@ public class SellStation {
 		customers.add(c);
 	}
 
-	public void removeCustomer() {
-		customers.remove();
-	}
-
-	public String getStationName() {
-		return stationName;
-	}
-
-	public void setStationName(String name) {
-		this.stationName = name;
-	}
-
 	public Queue<Customer> getCustomers() {
 		return customers;
-	}
-
-	public void setCustomers(Queue<Customer> customers) {
-		this.customers = customers;
-	}
-
-	public Employee getActualEmployee() {
-		return actualEmployee;
-	}
-
-	public void unasignEmployee() {
-		this.actualEmployee = null;
-		this.asignedEmployee = false;
 	}
 
 	public void setActualEmployee(Employee actualEmployee) {
