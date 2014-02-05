@@ -6,44 +6,34 @@ public class Start {
 	public static void main(String[] args) {
 
 		lidl = new Merkat();
-		lidl.start();
-		
+
 		GenerateCustomer genCus = new GenerateCustomer();
 		genCus.start();
-		ShowLidl t = new ShowLidl();
-		t.start();
-		startRun();
-	}
-
-	public Merkat getMerkat() {
-		return lidl;
-	}
-
-	public synchronized static void startRun() {
-		do{
-			if (lidl.canAssign()) { 
+		
+		ShowLidl showLidl = new ShowLidl();
+		showLidl.start();
+		
+		while (lidl.getTotalCustomers() > 0) {
+			showLidl.run();
+			while (lidl.getCustomersInQueue() > 0) {
 				lidl.assignCustomer();
-				lidl.updateTotalCustomer();
 			}
-		}while(true);
-
+		}
+		
 	}
 
 	public static class ShowLidl extends Thread {
-		public void ShowLidl() {
-
-		}
 
 		@Override
 		public void run() {
 			super.run();
-			try {
-				do {
+			if (!this.isAlive()) {
+				try {
 					System.out.println(lidl.toString());
-					Thread.sleep(500);
-				} while (true);
-			} catch (Exception e) {
-				// TODO: handle exception
+					Thread.sleep(3000);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

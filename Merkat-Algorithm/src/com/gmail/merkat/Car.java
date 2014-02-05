@@ -16,8 +16,7 @@ public class Car {
 	}
 
 	public void fillCar() {
-		int prova = new Random().nextInt(Utils.maxNProducts);
-		for (int i = 0; i < prova; i++) {
+		for (int i = 0; i < new Random().nextInt(Utils.maxNProducts); i++) {
 			products.add(i);
 		}
 	}
@@ -32,7 +31,7 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "\n\t\t\tCar [products=" + products + "]";
+		return products.toString();
 	}
 
 }

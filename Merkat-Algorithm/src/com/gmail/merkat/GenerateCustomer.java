@@ -8,16 +8,12 @@ public class GenerateCustomer extends Thread {
 		super.run();
 		do {
 			try {
-				Start.lidl.setCanAssign(false);
 				int n = new Random().nextInt(Utils.maxGenCustomers);
-				if (n + Start.lidl.getAwaitingCustomers() < Utils.maxNCustomers) {
-					Start.lidl.setAwaitingCustomers(Start.lidl
-							.getAwaitingCustomers() + n);
-					System.out.println("Creating: " + n + " new customers.\n");
-				}
-				Start.lidl.updateTotalCustomer();
-				if (Start.lidl.getAwaitingCustomers() > 0) {
-					Start.lidl.setCanAssign(true);
+				System.out.println("Creating: " + n + " new customers.\n");
+				if (n + Start.lidl.customerQueue.size() < Utils.maxNCustomers) {
+					for (int i = 0; i < n; i++) {
+						Start.lidl.customerQueue.add(new Customer(new Random().nextInt()));
+					}
 				}
 				Thread.sleep(new Random().nextInt(Utils.maxTimeGenCustomers
 						- Utils.minimeGenCustomers)

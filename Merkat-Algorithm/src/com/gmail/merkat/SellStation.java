@@ -84,13 +84,10 @@ public class SellStation {
 		if (customers.size() == 0) {
 			s += ("\n\tNo customers in queue.");
 		} else {
-			s += customers.toString();
 			for (int i = 0; i < customers.size(); i++) {
-				s += (s + " , " + customers.element());
+				s += (s + customers.element().toString());
 			}
-
 		}
-
 		return s;
 	}
 

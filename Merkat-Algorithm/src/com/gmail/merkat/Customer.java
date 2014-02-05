@@ -36,9 +36,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		String s = "";
-		s += ("\n\tCustomer " + cart.toString());
-		return s;
+		return "\n\tCustomer " + this.id + " -> " + cart.toString();
 	}
 
 }
