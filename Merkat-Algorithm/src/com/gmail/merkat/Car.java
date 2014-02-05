@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Stack;
 
 public class Car {
+	
 	private Stack<Integer> products;
 
 	public Car() {
@@ -32,7 +33,11 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "\n\t\t\tCar [products=" + products + "]";
+		String s = "\n\t\t\tProducts: ";
+		for (int i = 0; i < products.size(); i++) {
+			s += (i + " ");
+		}
+		return s;
 	}
 
 }

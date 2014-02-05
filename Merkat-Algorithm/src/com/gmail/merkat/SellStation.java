@@ -14,7 +14,6 @@ public class SellStation {
 		this.stationName = s;
 		this.asignedEmployee = false;
 		this.customers = new LinkedList<Customer>();
-
 	}
 
 	public SellStation(String s, Queue<Customer> customers,
@@ -75,7 +74,7 @@ public class SellStation {
 	@Override
 	public String toString() {
 		String s = "";
-		s += ("\n - " + this.stationName + "\n");
+		s += ("\n- " + this.stationName + "\n");
 		if (asignedEmployee) {
 			s += ("\tActual employee: " + actualEmployee.toString());
 		} else {
@@ -85,12 +84,7 @@ public class SellStation {
 			s += ("\n\tNo customers in queue.");
 		} else {
 			s += customers.toString();
-			for (int i = 0; i < customers.size(); i++) {
-				s += (s + " , " + customers.element());
-			}
-
 		}
-
 		return s;
 	}
 

@@ -1,6 +1,7 @@
 package com.gmail.merkat;
 
 public class Customer {
+	
 	private int id;
 	private Car cart;
 
