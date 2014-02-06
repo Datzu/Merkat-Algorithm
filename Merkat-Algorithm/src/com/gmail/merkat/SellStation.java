@@ -35,7 +35,7 @@ public class SellStation extends Thread {
 				// agafar client i anar treient els productes del carro a la velocitat de l'empleat
 				// quan productes = 0 , s'elimina el client
 				if(this.customers.size() > 0){
-					System.out.println(this.stationName + " : Tinc customers ");
+					System.out.println(this.stationName + " : Tinc " + actualCustomers + " customers ");
 				}else{
 					System.out.println(this.stationName + " : NO Tinc customers ");
 				}
