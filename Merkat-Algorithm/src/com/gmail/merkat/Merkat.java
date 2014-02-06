@@ -40,26 +40,31 @@ public class Merkat {
 	}
 
 	public void assignCustomer() {
-		for (SellStation s : sellStationList) {
-			if (s.getCustomers().size() < 6) {
-				if (!s.isAsignedEmployee()) {
-					Employee tmpEmployee = employeeQueue.remove();
-					employeeQueue.add(tmpEmployee);
-					s.setActualEmployee(tmpEmployee);
-				}
-				while (s.getCustomers().size() < 6) {
-					if (customerQueue.size() > 0) {
-						s.addCustomer(customerQueue.remove());
-						totalCustomers--;
-					} else {
-						break;
+		int n = customerQueue.size();
+		for (int i = 0; i < n; i++) {
+			for (SellStation s : sellStationList) {
+				if (s.getCustomers().size() < 5) {
+					if (!s.isAsignedEmployee()) {
+						Employee tmpEmployee = employeeQueue.remove();
+						employeeQueue.add(tmpEmployee);
+						s.setActualEmployee(tmpEmployee);
+					}
+					while (s.getCustomers().size() < 5) {
+						if (customerQueue.size() > 0) {
+							Customer c = customerQueue.poll();
+							s.addCustomer(c);
+							totalCustomers--;
+							System.out.println("Adding to " + s.getStationName() + " client: " + c.getId());
+						} else {
+							break;
+						}
 					}
 				}
 			}
 		}
 	}
 
-	public int getCustomersInQueue() {
+	public synchronized int getCustomersInQueue() {
 		return this.customerQueue.size();
 	}
 
@@ -75,5 +80,11 @@ public class Merkat {
 		}
 		return s;
 	}
+//	
+//	public void show() {
+//		for (int i = 0; i < sellStationList.size(); i++) {
+//			System.out.println(sellStationList.get(i).toString() + "\n");
+//		}
+//	}
 
 }

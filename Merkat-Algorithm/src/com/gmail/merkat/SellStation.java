@@ -30,6 +30,10 @@ public class SellStation {
 		customers.add(c);
 	}
 
+	public String getStationName() {
+		return this.stationName;
+	}
+
 	public Queue<Customer> getCustomers() {
 		return customers;
 	}

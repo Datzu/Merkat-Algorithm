@@ -3,6 +3,10 @@ package com.gmail.merkat;
 public class Employee {
 
 	private int id;
+	
+	public Employee() {
+		
+	}
 
 	public Employee(int id) {
 		this.id = id;

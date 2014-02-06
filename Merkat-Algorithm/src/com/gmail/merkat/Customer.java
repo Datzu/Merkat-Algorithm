@@ -9,6 +9,10 @@ public class Customer {
 		this.id = id;
 		this.cart = new Car();
 	}
+	
+	public int getId() {
+		return this.id;
+	}
 
 	@Override
 	public String toString() {

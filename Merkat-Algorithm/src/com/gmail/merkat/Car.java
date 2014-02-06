@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Stack;
 
 public class Car {
+	
 	private Stack<Integer> products;
 
 	public Car() {
