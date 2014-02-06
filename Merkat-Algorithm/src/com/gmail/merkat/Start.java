@@ -11,7 +11,7 @@ public class Start {
 		genCus.start();
 
 		while (lidl.getTotalCustomers() > 0) {
-			SynchronizedOutput.display();
+//			SynchronizedOutput.display();
 			while (lidl.getCustomersInQueue() > 0) {
 				lidl.assignCustomer();
 			}

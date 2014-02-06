@@ -14,7 +14,6 @@ public class SellStation {
 		this.stationName = s;
 		this.asignedEmployee = false;
 		this.customers = new LinkedList<Customer>();
-
 	}
 
 	public SellStation(String s, Queue<Customer> customers,
