@@ -22,6 +22,15 @@ public class Merkat {
 		for (int i = 0; i < Utils.nSellStations; i++) {
 			sellStationList.add(new SellStation("Station " + i));
 		}
+		for (SellStation s : sellStationList) {
+			try {
+				System.out.println(s.getStationName() + " started.");
+				s.start();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(s.getStationName() + " error executing.");
+			}
+		}
 		for (int i = 0; i < Utils.nEmployees; i++) {
 			employeeList.add(new Employee(i));
 		}
@@ -54,7 +63,9 @@ public class Merkat {
 							Customer c = customerQueue.poll();
 							s.addCustomer(c);
 							totalCustomers--;
-							System.out.println("Adding to " + s.getStationName() + " client: " + c.getId());
+							System.out.println("Adding to "
+									+ s.getStationName() + " client: "
+									+ c.getId());
 						} else {
 							break;
 						}
@@ -80,11 +91,11 @@ public class Merkat {
 		}
 		return s;
 	}
-//	
-//	public void show() {
-//		for (int i = 0; i < sellStationList.size(); i++) {
-//			System.out.println(sellStationList.get(i).toString() + "\n");
-//		}
-//	}
+	//
+	// public void show() {
+	// for (int i = 0; i < sellStationList.size(); i++) {
+	// System.out.println(sellStationList.get(i).toString() + "\n");
+	// }
+	// }
 
 }

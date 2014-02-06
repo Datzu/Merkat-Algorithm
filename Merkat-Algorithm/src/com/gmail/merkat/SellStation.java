@@ -3,7 +3,7 @@ package com.gmail.merkat;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class SellStation {
+public class SellStation extends Thread {
 
 	private String stationName;
 	private Queue<Customer> customers;
@@ -23,6 +23,20 @@ public class SellStation {
 		this.actualEmployee = actualEmployee;
 		this.asignedEmployee = false;
 		this.customers = new LinkedList<Customer>();
+	}
+
+	@Override
+	public void run() {
+		super.run();
+		try {
+			do {
+				int actualCustomers = this.customers.size();
+				System.out.println(this.stationName + " " + actualCustomers);
+				Thread.sleep(1000);
+			} while (true);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void addCustomer(Customer c) {
