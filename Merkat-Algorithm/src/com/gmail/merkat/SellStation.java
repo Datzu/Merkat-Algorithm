@@ -3,13 +3,22 @@ package com.gmail.merkat;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Classe que representa una caixa del supermercat
+ * 
+ * @author Adria i Gerard
+ * @since 31-01-2014
+ */
 public class SellStation extends Thread {
 
-	private String stationName;
-	private Queue<Customer> customers;
-	private Employee actualEmployee;
-	private boolean asignedEmployee;
-	private boolean changeEmployee = false;
+	private String stationName; // nom de la caixa
+	private Queue<Customer> customers; // cua de clients de la caixa
+	private Employee actualEmployee; // empelat que està actualment assignat a
+										// la caixa treballant
+	private boolean asignedEmployee; // si està assignat (o no) un empelat a una
+										// caixa
+	private boolean changeEmployee = false; // Comprovar si s'ha de canviar
+											// l'empelat o no
 
 	public SellStation(String s) {
 		this.stationName = s;
@@ -26,6 +35,9 @@ public class SellStation extends Thread {
 		this.customers = new LinkedList<Customer>();
 	}
 
+	/**
+	 * Mètode per començar el thread
+	 */
 	@Override
 	public void run() {
 		super.run();
@@ -51,6 +63,11 @@ public class SellStation extends Thread {
 		}
 	}
 
+	/**
+	 * Afegir un nou client a una caixa
+	 * 
+	 * @param c variable que representa un nou client
+	 */
 	public void addCustomer(Customer c) {
 		customers.add(c);
 	}
@@ -102,6 +119,5 @@ public class SellStation extends Thread {
 		}
 		return s;
 	}
-
 
 }

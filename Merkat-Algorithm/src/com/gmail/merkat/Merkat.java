@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-
+/**
+ * Classe que representa un supermercat
+ * 
+ * @author Adria i Gerard
+ * @since 31-01-2014
+ */
 public class Merkat {
 
-	private List<SellStation> sellStationList;
-	private List<Employee> employeeList;
-	private Queue<Employee> employeeQueue;
-	private int totalCustomers = Utils.maxNCustomers;
-
-	public Queue<Customer> customerQueue;
+	private List<SellStation> sellStationList; // LLista de caixes del supermercat
+	private List<Employee> employeeList;  // LLista dels empleats del mercat
+	private Queue<Employee> employeeQueue; // Cua dels empelats del mercat
+	private int totalCustomers = Utils.maxNCustomers;  // Clients que poden entrar actualment al supermercat fins que tanquin
+	public Queue<Customer> customerQueue; // Cua de clients esperant a ser assignats a una caixa
 
 	public Merkat() {
 		this.sellStationList = new ArrayList<SellStation>();
@@ -92,11 +96,17 @@ public class Merkat {
 	public synchronized int getCustomersInQueue() {
 		return this.customerQueue.size();
 	}
-
+/**
+ *  Retorna el total de clients
+ * @return int
+ */
 	public int getTotalCustomers() {
 		return this.totalCustomers;
 	}
-
+/**
+ * Posa el primer treballador al final de la cua
+ * Simulació del canvi de torn
+ */
 	public void changeEmployee() {
 		employeeQueue.add(employeeQueue.poll());
 	}
@@ -109,14 +119,12 @@ public class Merkat {
 		}
 		return s;
 	}
-
-	//
-	// public void show() {
-	// for (int i = 0; i < sellStationList.size(); i++) {
-	// System.out.println(sellStationList.get(i).toString() + "\n");
-	// }
-	// }
-
+/**
+ * Thread que va comprovant si un empleat ha superat el temps de feina del seu torn
+ * @author Adria i Gerard
+ * @since 31-01-2014
+ *
+ */
 	public class EmployeeHandler extends Thread {
 		@Override
 		public void run() {
