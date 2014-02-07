@@ -1,4 +1,0 @@
--> Run sellstation : bucle per buidar un carro amb el temps d'espera q tardi el empleat (lo de sota). quan el carro
-estigui buit q elimini el customer (treure de la queue -poll-)
--> contructor employee:  afegir a employee una variable per el temps q tarda a buidar el carro
--> constructor employee : Quan generi empleat li assigni un random (entre 0  - maxTimeScan)

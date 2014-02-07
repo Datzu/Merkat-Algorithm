@@ -19,4 +19,9 @@ public class Customer {
 		return "\n\tCustomer " + this.id + " -> " + cart.toString();
 	}
 
+	public Car getCart() {
+		return cart;
+	}
+
+	
 }

@@ -9,6 +9,7 @@ public class SellStation extends Thread {
 	private Queue<Customer> customers;
 	private Employee actualEmployee;
 	private boolean asignedEmployee;
+	private boolean changeEmployee = false;
 
 	public SellStation(String s) {
 		this.stationName = s;
@@ -30,14 +31,18 @@ public class SellStation extends Thread {
 		super.run();
 		try {
 			do {
-				int actualCustomers = this.customers.size();
-				System.out.println(this.stationName + " " + actualCustomers);
-				// agafar client i anar treient els productes del carro a la velocitat de l'empleat
-				// quan productes = 0 , s'elimina el client
-				if(this.customers.size() > 0){
-					System.out.println(this.stationName + " : Tinc " + actualCustomers + " customers ");
-				}else{
-					System.out.println(this.stationName + " : NO Tinc customers ");
+				if (this.customers.size() > 0) {
+					Customer c = customers.peek();
+					while (c.getCart().carSize() > 0) {
+						System.out.println("De la caixa " + this.stationName
+								+ " el client " + c.getId() + " el producte "
+								+ c.getCart().nextProduct()
+								+ " ha estat escanejat. ");
+
+						Thread.sleep(actualEmployee.getTime());
+					}
+					System.out.println("Següent client si us plau... ");
+					customers.poll();
 				}
 				Thread.sleep(1000);
 			} while (true);
@@ -71,6 +76,14 @@ public class SellStation extends Thread {
 		this.asignedEmployee = asignedEmployee;
 	}
 
+	public Employee getActualEmployee() {
+		return actualEmployee;
+	}
+
+	public void setChangeEmployee(boolean changeEmployee) {
+		this.changeEmployee = changeEmployee;
+	}
+
 	@Override
 	public String toString() {
 		String s = "";
@@ -89,5 +102,6 @@ public class SellStation extends Thread {
 		}
 		return s;
 	}
+
 
 }

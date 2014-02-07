@@ -52,6 +52,20 @@ public class Merkat {
 		int n = customerQueue.size();
 		for (int i = 0; i < n; i++) {
 			for (SellStation s : sellStationList) {
+				if (s.isAsignedEmployee()) {
+					new EmployeeHandler().start();
+					if (s.getActualEmployee().haveToChange()) {
+						System.out
+								.println("L'empleat "
+										+ s.getActualEmployee()
+										+ " ha superat el temps de feina i va a descansar");
+						changeEmployee();
+						s.setActualEmployee(employeeQueue.peek());
+						System.out.println("L'empelat " + s.getActualEmployee()
+								+ " entra a subsituir l'anterior. ");
+
+					}
+				}
 				if (s.getCustomers().size() < 5) {
 					if (!s.isAsignedEmployee()) {
 						Employee tmpEmployee = employeeQueue.remove();
@@ -83,6 +97,10 @@ public class Merkat {
 		return this.totalCustomers;
 	}
 
+	public void changeEmployee() {
+		employeeQueue.add(employeeQueue.poll());
+	}
+
 	@Override
 	public String toString() {
 		String s = "";
@@ -91,11 +109,31 @@ public class Merkat {
 		}
 		return s;
 	}
+
 	//
 	// public void show() {
 	// for (int i = 0; i < sellStationList.size(); i++) {
 	// System.out.println(sellStationList.get(i).toString() + "\n");
 	// }
 	// }
+
+	public class EmployeeHandler extends Thread {
+		@Override
+		public void run() {
+			super.run();
+			do {
+				for (SellStation s : sellStationList) {
+					s.getActualEmployee().incrementTimeWork();
+				}
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			} while (true);
+
+		}
+
+	}
 
 }

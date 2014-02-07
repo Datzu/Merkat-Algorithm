@@ -29,7 +29,9 @@ public class Utils {
 												// la cinta
 
 	public static final int minimeGenCustomers = 2500; // temps minim per
-														// generar clients
+	// generar clients
 	public static final int maxTimeGenCustomers = 10000; // temps maxim per
-															// generar clients
+	// generar clients
+
+	public static final int maxEmployeeTimeWork = 10; //  iteracions simulant el temps que esta el treballador a la caixa
 }

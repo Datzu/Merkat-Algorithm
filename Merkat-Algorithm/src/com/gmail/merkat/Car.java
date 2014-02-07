@@ -18,6 +18,14 @@ public class Car {
 		}
 	}
 
+	public int nextProduct(){
+		return products.pop();
+	}
+	
+	public int carSize(){
+		return products.size();
+	}
+
 	@Override
 	public String toString() {
 		return products.toString();
